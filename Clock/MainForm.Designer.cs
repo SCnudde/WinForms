@@ -35,17 +35,20 @@
             this.cbShowDate = new System.Windows.Forms.CheckBox();
             this.cbShowWeekDay = new System.Windows.Forms.CheckBox();
             this.btnHideControls = new System.Windows.Forms.Button();
+            this.notifyIcon = new System.Windows.Forms.NotifyIcon(this.components);
             this.SuspendLayout();
             // 
             // labelTime
             // 
             this.labelTime.AutoSize = true;
+            this.labelTime.BackColor = System.Drawing.SystemColors.Highlight;
             this.labelTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 32F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.labelTime.Location = new System.Drawing.Point(13, 14);
             this.labelTime.Name = "labelTime";
             this.labelTime.Size = new System.Drawing.Size(388, 73);
             this.labelTime.TabIndex = 0;
             this.labelTime.Text = "CurrentTime";
+            this.labelTime.MouseHover += new System.EventHandler(this.labelTime_MouseHover);
             // 
             // timer
             // 
@@ -85,6 +88,13 @@
             this.btnHideControls.UseVisualStyleBackColor = true;
             this.btnHideControls.Click += new System.EventHandler(this.btnHideControls_Click);
             // 
+            // notifyIcon
+            // 
+            this.notifyIcon.Icon = ((System.Drawing.Icon)(resources.GetObject("notifyIcon.Icon")));
+            this.notifyIcon.Text = "System  Tray";
+            this.notifyIcon.Visible = true;
+            this.notifyIcon.DoubleClick += new System.EventHandler(this.notifyIcon_DoubleClick);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 22F);
@@ -94,6 +104,7 @@
             this.Controls.Add(this.cbShowWeekDay);
             this.Controls.Add(this.cbShowDate);
             this.Controls.Add(this.labelTime);
+            this.DoubleBuffered = true;
             this.Font = new System.Drawing.Font("Gill Sans Ultra Bold Condensed", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -112,6 +123,7 @@
         private System.Windows.Forms.CheckBox cbShowDate;
         private System.Windows.Forms.CheckBox cbShowWeekDay;
         private System.Windows.Forms.Button btnHideControls;
+        private System.Windows.Forms.NotifyIcon notifyIcon;
     }
 }
 

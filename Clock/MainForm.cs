@@ -19,6 +19,16 @@ namespace Clock
             this.MinimizeBox = false;
         }
 
+        void SetVisibility(bool visible)
+        {
+            cbShowDate.Visible = visible;
+            cbShowWeekDay.Visible = visible;
+            btnHideControls.Visible = visible;
+            this.ShowInTaskbar = visible;
+            this.FormBorderStyle = visible ? FormBorderStyle.FixedSingle: FormBorderStyle.None;
+            this.TransparencyKey = visible ? Color.Empty : this.BackColor;
+        }
+
         private void timer_Tick(object sender, EventArgs e)
         {
             labelTime.Text = DateTime.Now.ToString("hh:mm:ss tt", System.Globalization.CultureInfo.InvariantCulture);
@@ -33,14 +43,24 @@ namespace Clock
                 labelTime.Text += "\n";
                 labelTime.Text += DateTime.Now.DayOfWeek;
             }
+
+            notifyIcon.Text = labelTime.Text;// наводя стрелку на иконку, отображается время в нижнем меню
         }
 
         private void btnHideControls_Click(object sender, EventArgs e)
         {
-            cbShowDate.Visible = false;
-            cbShowWeekDay.Visible = false;
-            btnHideControls.Visible = false;
-            this.ShowInTaskbar = false;
+           SetVisibility(false);
+        }
+
+        private void labelTime_MouseHover(object sender, EventArgs e)
+        {
+            SetVisibility(true);
+        }
+
+        private void notifyIcon_DoubleClick(object sender, EventArgs e)
+        {
+            this.TopMost = true;
+            this.TopMost = false;
         }
     }
 }
