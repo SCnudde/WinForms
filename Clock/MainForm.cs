@@ -1,13 +1,20 @@
-﻿using System;
+﻿using Clock.Properties;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Text;
+using System.IO;
 using System.Linq;
+using System.Reflection.Emit;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+
+
 
 namespace Clock
 {
@@ -47,6 +54,27 @@ namespace Clock
             }
 
             notifyIcon.Text = labelTime.Text;// наводя стрелку на иконку, отображается время в нижнем меню
+
+            string fontFilePath = @"C:\Users\HP\Desktop\С#\WinForms\Clock\BallTack.ttf";
+          
+            PrivateFontCollection fontCollection = new PrivateFontCollection();
+            fontCollection.AddFontFile(fontFilePath);
+
+            if (fontCollection.Families.Length > 0)
+            {
+                byte[] fontData = File.ReadAllBytes(fontFilePath);
+                IntPtr fontPtr = Marshal.AllocCoTaskMem(fontData.Length);
+                Marshal.Copy(fontData, 0, fontPtr, fontData.Length);
+                fontCollection.AddMemoryFont(fontPtr, fontData.Length);
+                Marshal.FreeCoTaskMem(fontPtr);
+            }
+            else
+            {
+                Console.WriteLine("Font installation failed");
+            }
+
+            labelTime.Font = new Font(fontCollection.Families[0], 32);
+            Controls.Add(labelTime);
         }
 
         private void btnHideControls_Click(object sender, EventArgs e)
@@ -111,5 +139,6 @@ namespace Clock
             }
 
         }
+       
     }
 }
