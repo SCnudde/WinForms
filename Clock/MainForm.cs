@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace Clock
 {
@@ -26,7 +27,7 @@ namespace Clock
             cbShowWeekDay.Visible = visible;
             btnHideControls.Visible = visible;
             this.ShowInTaskbar = visible;
-            this.FormBorderStyle = visible ? FormBorderStyle.FixedSingle: FormBorderStyle.None;
+            this.FormBorderStyle = visible ? FormBorderStyle.FixedSingle : FormBorderStyle.None;
             this.TransparencyKey = visible ? Color.Empty : this.BackColor;
         }
 
@@ -50,8 +51,8 @@ namespace Clock
 
         private void btnHideControls_Click(object sender, EventArgs e)
         {
-           SetVisibility(tsmiShowControls.Checked = false);
-           
+            SetVisibility(tsmiShowControls.Checked = false);
+
         }
 
         //private void labelTime_MouseHover(object sender, EventArgs e)
@@ -72,11 +73,7 @@ namespace Clock
         {
             this.TopMost = tsmiTopmost.Checked;
         }
-
-        private void tsmiShowControls_Click(object sender, EventArgs e)
-        {
-
-        }
+        
 
         private void tsmiShowControls_CheckedChanged(object sender, EventArgs e)
         {
@@ -95,6 +92,24 @@ namespace Clock
         private void cbShowWeekDay_CheckedChanged(object sender, EventArgs e) => tsmiShowWeekday.Checked = cbShowWeekDay.Checked;
 
         private void tsmiQuit_Click(object sender, EventArgs e) => this.Close();
-        
+
+        private void tsmiForegroundColor_Click(object sender, EventArgs e)
+        {           
+            ColorDialog colorDialog = new ColorDialog();
+            if (colorDialog.ShowDialog() == DialogResult.OK)
+            {
+                labelTime.ForeColor = colorDialog.Color;
+            }
+
+        }
+        private void tsmiBackgroundColor_Click(object sender, EventArgs e)
+        {
+            ColorDialog colorDialog = new ColorDialog();
+            if (colorDialog.ShowDialog() == DialogResult.OK)
+            {
+                labelTime.BackColor = colorDialog.Color;
+            }
+
+        }
     }
 }
