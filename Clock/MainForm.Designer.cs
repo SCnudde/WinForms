@@ -201,7 +201,7 @@
             this.tsmiShowControls.Size = new System.Drawing.Size(240, 32);
             this.tsmiShowControls.Text = "Show controls";
             this.tsmiShowControls.CheckedChanged += new System.EventHandler(this.tsmiShowControls_CheckedChanged);
-            this.tsmiShowControls.Click += new System.EventHandler(this.tsmiShowControls_Click);
+            //this.tsmiShowControls.Click += new System.EventHandler(this.tsmiShowControls_Click);
             // 
             // timer
             // 
