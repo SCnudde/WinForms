@@ -1,12 +1,20 @@
-﻿using System;
+﻿using Clock.Properties;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Text;
+using System.IO;
 using System.Linq;
+using System.Reflection.Emit;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+
+
 
 namespace Clock
 {
@@ -26,7 +34,7 @@ namespace Clock
             cbShowWeekDay.Visible = visible;
             btnHideControls.Visible = visible;
             this.ShowInTaskbar = visible;
-            this.FormBorderStyle = visible ? FormBorderStyle.FixedSingle: FormBorderStyle.None;
+            this.FormBorderStyle = visible ? FormBorderStyle.FixedSingle : FormBorderStyle.None;
             this.TransparencyKey = visible ? Color.Empty : this.BackColor;
         }
 
@@ -46,12 +54,33 @@ namespace Clock
             }
 
             notifyIcon.Text = labelTime.Text;// наводя стрелку на иконку, отображается время в нижнем меню
+
+            string fontFilePath = @"C:\Users\HP\Desktop\С#\WinForms\Clock\BallTack.ttf";
+          
+            PrivateFontCollection fontCollection = new PrivateFontCollection();
+            fontCollection.AddFontFile(fontFilePath);
+
+            if (fontCollection.Families.Length > 0)
+            {
+                byte[] fontData = File.ReadAllBytes(fontFilePath);
+                IntPtr fontPtr = Marshal.AllocCoTaskMem(fontData.Length);
+                Marshal.Copy(fontData, 0, fontPtr, fontData.Length);
+                fontCollection.AddMemoryFont(fontPtr, fontData.Length);
+                Marshal.FreeCoTaskMem(fontPtr);
+            }
+            else
+            {
+                Console.WriteLine("De installatie mislukt!");
+            }
+
+            labelTime.Font = new Font(fontCollection.Families[0], 32);
+            Controls.Add(labelTime);
         }
 
         private void btnHideControls_Click(object sender, EventArgs e)
         {
-           SetVisibility(tsmiShowControls.Checked = false);
-           
+            SetVisibility(tsmiShowControls.Checked = false);
+
         }
 
         //private void labelTime_MouseHover(object sender, EventArgs e)
@@ -72,11 +101,7 @@ namespace Clock
         {
             this.TopMost = tsmiTopmost.Checked;
         }
-
-        private void tsmiShowControls_Click(object sender, EventArgs e)
-        {
-
-        }
+        
 
         private void tsmiShowControls_CheckedChanged(object sender, EventArgs e)
         {
@@ -95,6 +120,25 @@ namespace Clock
         private void cbShowWeekDay_CheckedChanged(object sender, EventArgs e) => tsmiShowWeekday.Checked = cbShowWeekDay.Checked;
 
         private void tsmiQuit_Click(object sender, EventArgs e) => this.Close();
-        
+
+        private void tsmiForegroundColor_Click(object sender, EventArgs e)
+        {           
+            ColorDialog colorDialog = new ColorDialog();
+            if (colorDialog.ShowDialog() == DialogResult.OK)
+            {
+                labelTime.ForeColor = colorDialog.Color;
+            }
+
+        }
+        private void tsmiBackgroundColor_Click(object sender, EventArgs e)
+        {
+            ColorDialog colorDialog = new ColorDialog();
+            if (colorDialog.ShowDialog() == DialogResult.OK)
+            {
+                labelTime.BackColor = colorDialog.Color;
+            }
+
+        }
+       
     }
 }
