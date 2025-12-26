@@ -77,6 +77,7 @@
             this.buttonCancel.TabIndex = 3;
             this.buttonCancel.Text = "Cancel";
             this.buttonCancel.UseVisualStyleBackColor = false;
+            this.buttonCancel.Click += new System.EventHandler(this.buttonCancel_Click);
             // 
             // FontDialog
             // 
@@ -87,9 +88,12 @@
             this.Controls.Add(this.buttonOk);
             this.Controls.Add(this.labelExample);
             this.Controls.Add(this.comboBoxFont);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "FontDialog";
+            this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "FontDIalog";
+            this.TopMost = true;
             this.Load += new System.EventHandler(this.FontDialog_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

@@ -80,8 +80,6 @@ namespace Clock
             //}
             //string fontFilePath = @"C:\Users\HP\Desktop\С#\WinForms\Clock\BallTack.ttf";
 
-
-
             //labelTime.Font = new Font(fontCollection.Families[0], 32);
             //Controls.Add(labelTime);
         }
@@ -96,7 +94,6 @@ namespace Clock
         //{
         //    SetVisibility(true);
         //}
-
         private void notifyIcon_DoubleClick(object sender, EventArgs e)
         {
             if (!TopMost)
@@ -105,12 +102,10 @@ namespace Clock
                 this.TopMost = false;
             }
         }
-
         private void tsmiTopmost_Click(object sender, EventArgs e)
         {
             this.TopMost = tsmiTopmost.Checked;
-        }
-        
+        }        
 
         private void tsmiShowControls_CheckedChanged(object sender, EventArgs e)
         {
@@ -147,15 +142,13 @@ namespace Clock
                 labelTime.BackColor = colorDialog.Color;
             }
         }
-
         private void tsmiFont_Click(object sender, EventArgs e)
         {
             fontDialog.Location = new Point
                 (
-                this.Location.X - fontDialog.Width -10,
+                this.Location.X + fontDialog.Width -10,
                 this.Location.Y
                 );
-
             
             fontDialog.Font = labelTime.Font;
             DialogResult result = fontDialog.ShowDialog();
