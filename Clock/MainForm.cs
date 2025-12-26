@@ -20,12 +20,21 @@ namespace Clock
 {
     public partial class MainForm : Form
     {
+        ColorDialog foregroundColorDialog;
+        ColorDialog backgroundColorDialog;
+        FontDialog fontDialog;
+
         public MainForm()
         {
             InitializeComponent();
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             SetVisibility(false);
+            fontDialog = new FontDialog();
+            foregroundColorDialog = new ColorDialog();
+            backgroundColorDialog = new ColorDialog();
+            //this.ShowInTaskbar = Visible;
+            this.TopMost = tsmiTopmost.Checked = true;
         }
 
         void SetVisibility(bool visible)
@@ -54,27 +63,27 @@ namespace Clock
             }
 
             notifyIcon.Text = labelTime.Text;// наводя стрелку на иконку, отображается время в нижнем меню
+            //PrivateFontCollection fontCollection = new PrivateFontCollection();
+            //fontCollection.AddFontFile(fontFilePath);
 
-            string fontFilePath = @"C:\Users\HP\Desktop\С#\WinForms\Clock\BallTack.ttf";
-          
-            PrivateFontCollection fontCollection = new PrivateFontCollection();
-            fontCollection.AddFontFile(fontFilePath);
+            //if (fontCollection.Families.Length > 0)
+            //{
+            //    byte[] fontData = File.ReadAllBytes(fontFilePath);
+            //    IntPtr fontPtr = Marshal.AllocCoTaskMem(fontData.Length);
+            //    Marshal.Copy(fontData, 0, fontPtr, fontData.Length);
+            //    fontCollection.AddMemoryFont(fontPtr, fontData.Length);
+            //    Marshal.FreeCoTaskMem(fontPtr);
+            //}
+            //else
+            //{
+            //    Console.WriteLine("De installatie mislukt!");
+            //}
+            //string fontFilePath = @"C:\Users\HP\Desktop\С#\WinForms\Clock\BallTack.ttf";
 
-            if (fontCollection.Families.Length > 0)
-            {
-                byte[] fontData = File.ReadAllBytes(fontFilePath);
-                IntPtr fontPtr = Marshal.AllocCoTaskMem(fontData.Length);
-                Marshal.Copy(fontData, 0, fontPtr, fontData.Length);
-                fontCollection.AddMemoryFont(fontPtr, fontData.Length);
-                Marshal.FreeCoTaskMem(fontPtr);
-            }
-            else
-            {
-                Console.WriteLine("De installatie mislukt!");
-            }
 
-            labelTime.Font = new Font(fontCollection.Families[0], 32);
-            Controls.Add(labelTime);
+
+            //labelTime.Font = new Font(fontCollection.Families[0], 32);
+            //Controls.Add(labelTime);
         }
 
         private void btnHideControls_Click(object sender, EventArgs e)
@@ -128,17 +137,36 @@ namespace Clock
             {
                 labelTime.ForeColor = colorDialog.Color;
             }
-
         }
         private void tsmiBackgroundColor_Click(object sender, EventArgs e)
         {
+           // DialogResult result = foregroundColorDialog.ShowDialog();
             ColorDialog colorDialog = new ColorDialog();
             if (colorDialog.ShowDialog() == DialogResult.OK)
             {
                 labelTime.BackColor = colorDialog.Color;
             }
+        }
+
+        private void tsmiFont_Click(object sender, EventArgs e)
+        {
+            fontDialog.Location = new Point
+                (
+                this.Location.X - fontDialog.Width -10,
+                this.Location.Y
+                );
+
+            
+            fontDialog.Font = labelTime.Font;
+            DialogResult result = fontDialog.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                labelTime.Font = fontDialog.Font;
+            }
+
+           // this.fontDialog.ShowDialog();
+
 
         }
-       
     }
 }
