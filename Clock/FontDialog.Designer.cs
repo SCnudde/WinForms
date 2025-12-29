@@ -98,11 +98,10 @@
             this.numericUpDownFontSize.Size = new System.Drawing.Size(120, 26);
             this.numericUpDownFontSize.TabIndex = 4;
             this.numericUpDownFontSize.Value = new decimal(new int[] {
-            60,
+            32,
             0,
             0,
             0});
-            //this.numericUpDownFontSize.ValueChanged += new System.EventHandler(this.numericUpDownFontSize_ValueChanged);
             // 
             // FontDialog
             // 

@@ -77,7 +77,7 @@ namespace Clock
             writer.WriteLine(labelTime.BackColor.ToArgb());
             writer.WriteLine(labelTime.ForeColor.ToArgb());
 
-            writer.WriteLine(labelTime.Font.Name);
+            writer.WriteLine(fontDialog.Filename);
 
             writer.Close();
             System.Diagnostics.Process.Start("notepad", "Settings.ini");
@@ -107,6 +107,8 @@ namespace Clock
                 labelTime.BackColor = backgroundColorDialog.Color = Color.FromArgb(Convert.ToInt32(reader.ReadLine()));
                 labelTime.ForeColor = foregroundColorDialog.Color = Color.FromArgb(Convert.ToInt32(reader.ReadLine()));
 
+                fontDialog = new FontDialog(reader.ReadLine());
+                labelTime.Font = fontDialog.Font;
 
                 reader.Close();
             }
