@@ -102,7 +102,7 @@
             0,
             0,
             0});
-            this.numericUpDownFontSize.ValueChanged += new System.EventHandler(this.numericUpDownFontSize_ValueChanged);
+            //this.numericUpDownFontSize.ValueChanged += new System.EventHandler(this.numericUpDownFontSize_ValueChanged);
             // 
             // FontDialog
             // 
