@@ -36,8 +36,7 @@ namespace Clock
 
         public Alarm(Form form)
         {
-            InitializeComponent();
-            form.BackColor = Color.Beige;
+            InitializeComponent();            
         }            
 
         private void Alarm_Load(object sender, EventArgs e)
@@ -95,13 +94,12 @@ namespace Clock
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
-
         private void toggle_buttons1_CheckedChanged(object sender, EventArgs e)
         {                        
             if (toggle_buttons1.Checked == true)
             {
                 timer1.Start();
-                lblStatus.Text = "Alarm 1 turned on!";               
+                lblStatus.Text = "Alarm 1 turned ON";               
             }           
             else
             {
@@ -115,7 +113,7 @@ namespace Clock
             if (toggle_buttons2.Checked == true)
             {
                 timer2.Start();
-                lblStatus.Text = "Alarm 2 turned on!";
+                lblStatus.Text = "Alarm 2 turned ON";
             }
             else
             {
@@ -129,7 +127,7 @@ namespace Clock
             if (toggle_buttons3.Checked == true)
             {
                 timer3.Start();
-                lblStatus.Text = "Alarm 3 turned on!";
+                lblStatus.Text = "Alarm 3 turned ON";
             }
             else
             {

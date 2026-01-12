@@ -200,7 +200,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(692, 422);
+            this.ClientSize = new System.Drawing.Size(692, 433);
             this.Controls.Add(this.comboBoxSound3);
             this.Controls.Add(this.comboBoxSound2);
             this.Controls.Add(this.comboBoxSound1);
