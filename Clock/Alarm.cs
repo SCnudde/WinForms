@@ -36,8 +36,10 @@ namespace Clock
 
         public Alarm(Form form)
         {
-            InitializeComponent();            
-        }            
+            InitializeComponent();
+            this.BackColor = System.Drawing.Color.Blue;
+            this.BackColor = System.Drawing.Color.Blue;
+        }    
 
         private void Alarm_Load(object sender, EventArgs e)
         {
@@ -188,6 +190,6 @@ namespace Clock
             {
                 GongAlarm.Play();
             }
-        }
+        }       
     }
 }

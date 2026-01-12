@@ -76,7 +76,7 @@
             this.dateTimePicker_2.Name = "dateTimePicker_2";
             this.dateTimePicker_2.Size = new System.Drawing.Size(198, 45);
             this.dateTimePicker_2.TabIndex = 5;
-            this.dateTimePicker_2.Value = new System.DateTime(2026, 1, 10, 21, 35, 13, 0);
+            this.dateTimePicker_2.Value = new System.DateTime(2026, 1, 12, 14, 47, 35, 0);
             // 
             // dateTimePicker_3
             // 
@@ -215,6 +215,7 @@
             this.Controls.Add(this.lblStatus);
             this.Controls.Add(this.dateTimePicker_1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Alarm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Alarm clock";
