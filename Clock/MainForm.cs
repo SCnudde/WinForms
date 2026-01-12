@@ -240,5 +240,11 @@ namespace Clock
         {
             SaveSettings();
         }
+
+        private void tsmiAlarms_Click(object sender, EventArgs e)
+        {
+            Alarm new_alarm = new Alarm();
+            new_alarm.Show();
+        }
     }
 }

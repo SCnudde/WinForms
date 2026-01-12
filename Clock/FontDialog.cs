@@ -14,7 +14,7 @@ namespace Clock
 {
     public partial class FontDialog : Form
     {
-        public Font Font { get; set; }
+        override public Font Font { get; set; }
         public string Filename {  get; set; }   
 
         int lastChosenIndex;
