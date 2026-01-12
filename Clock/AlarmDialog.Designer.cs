@@ -31,6 +31,8 @@
             this.dtpDate = new System.Windows.Forms.DateTimePicker();
             this.dtpTime = new System.Windows.Forms.DateTimePicker();
             this.checkBoxUseDate = new System.Windows.Forms.CheckBox();
+            this.labelWeekDays = new System.Windows.Forms.Label();
+            this.clbWeekDays = new System.Windows.Forms.CheckedListBox();
             this.SuspendLayout();
             // 
             // dtpDate
@@ -64,11 +66,40 @@
             this.checkBoxUseDate.Text = "На определенную дату";
             this.checkBoxUseDate.UseVisualStyleBackColor = true;
             // 
+            // labelWeekDays
+            // 
+            this.labelWeekDays.AutoSize = true;
+            this.labelWeekDays.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labelWeekDays.Location = new System.Drawing.Point(27, 117);
+            this.labelWeekDays.Name = "labelWeekDays";
+            this.labelWeekDays.Size = new System.Drawing.Size(178, 37);
+            this.labelWeekDays.TabIndex = 3;
+            this.labelWeekDays.Text = "Дни недели";
+            // 
+            // clbWeekDays
+            // 
+            this.clbWeekDays.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.clbWeekDays.FormattingEnabled = true;
+            this.clbWeekDays.Items.AddRange(new object[] {
+            "Пн",
+            "Вт",
+            "Ср",
+            "Чт",
+            "Пт",
+            "Сб",
+            "Вс"});
+            this.clbWeekDays.Location = new System.Drawing.Point(34, 157);
+            this.clbWeekDays.Name = "clbWeekDays";
+            this.clbWeekDays.Size = new System.Drawing.Size(112, 256);
+            this.clbWeekDays.TabIndex = 4;
+            // 
             // AlarmDialog
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.clbWeekDays);
+            this.Controls.Add(this.labelWeekDays);
             this.Controls.Add(this.checkBoxUseDate);
             this.Controls.Add(this.dtpTime);
             this.Controls.Add(this.dtpDate);
@@ -84,5 +115,7 @@
         private System.Windows.Forms.DateTimePicker dtpDate;
         private System.Windows.Forms.DateTimePicker dtpTime;
         private System.Windows.Forms.CheckBox checkBoxUseDate;
+        private System.Windows.Forms.Label labelWeekDays;
+        private System.Windows.Forms.CheckedListBox clbWeekDays;
     }
 }
